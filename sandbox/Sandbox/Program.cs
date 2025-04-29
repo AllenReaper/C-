@@ -6,87 +6,25 @@ class Program
 {
     static void Main(string[] args)
     {
-        // these are notes 
-        Console.WriteLine("Enter the radesis");
-        string text = Console.ReadLine();
-        double raduis = double.Parse(text);
-
-        //compute the area
-        double area = Math.PI * raduis * raduis;
-
-        Console.WriteLine($"here: {area}");
-        // "$" tells the consol to look in the line for variables.
-        
-          
-        string s = "goodbuy";
-        string k = "freak";
-        float f = 3.14f;
-        double d = 5.21;
-        
-        // <-- this is how you write notes in the code.
-        /* same
-        */ 
-        Console.WriteLine($"Hello {k} Sandbox World! {k} you {f} freaking {d} legend!! {s}");
-
-
-        Console.Write("whats your firstname?");
-        string firstname = Console.ReadLine();
-
-        Console.Write("whats your lastname?");
-        string lastname = Console.ReadLine();
-        Console.WriteLine("");
-        Console.WriteLine($"Your name is {lastname}, {firstname} {lastname}.");
-
-        if(area > 50)
+        for (int i = 0; i < 10; i++)
         {
-            Console.WriteLine("your gay");
+            Console.WriteLine(i);
         }
-        else
-        {
-            Console.WriteLine("your less gay");
-        }
-        
-       
+        Random randomGenerator = new Random();
+        int number = randomGenerator.Next(1, 20);
 
-        // Ask the user for their grade percentage
-        Console.Write("Enter your grade percentage: ");
-        double gradePercentage = Convert.ToDouble(Console.ReadLine());
 
-        string letter;
+        string response = "yes";
 
-        // Determine the letter grade
-        if (gradePercentage >= 90)
+        while (response == "yes")
         {
-            letter = "A";
+            Console.WriteLine(number);
+            Console.Write("Do you want to continue? ");
+            response = Console.ReadLine();
         }
-        else if (gradePercentage >= 80)
-        {
-            letter = "B";
-        }
-        else if (gradePercentage >= 70)
-        {
-            letter = "C";
-        }
-        else if (gradePercentage >= 60)
-        {
-            letter = "D";
-        }
-        else
-        {
-            letter = "F";
-        }
-
-        // Print the letter grade
-        Console.WriteLine($"Your letter grade is: {letter}");
-
-        // Determine if the user passed the course
-        if (gradePercentage >= 70)
-        {
-            Console.WriteLine("nice, you passed");
-        }
-        else
-        {
-            Console.WriteLine("Do better next time");
-        }
+        for (int i = 2; i <= 20; i = i + 2)
+{
+    Console.WriteLine(i);
+}
     }
 }
