@@ -1,5 +1,3 @@
-using System.ComponentModel.DataAnnotations;
-
 public class Resume
 {
     public string _name;
