@@ -46,7 +46,7 @@ class Program
             }
         }
 
-        Console.WriteLine("Goodbye!");
+        Console.WriteLine("bye falishia!");
     }
 }
 
