@@ -7,10 +7,9 @@ class Reference
 
     public Reference(string reference)
     {
-        // Parses formats like: John 3:16 or Proverbs 3:5-6
-        string[] parts = reference.Split(' ');
-        _book = parts[0];
-        string[] chapterVerse = parts[1].Split(':');
+        int lastSpace = reference.LastIndexOf(' ');
+        _book = reference.Substring(0, lastSpace);
+        string[] chapterVerse = reference.Substring(lastSpace + 1).Split(':');
         _chapter = int.Parse(chapterVerse[0]);
 
         if (chapterVerse[1].Contains('-'))

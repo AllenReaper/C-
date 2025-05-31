@@ -1,8 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-
 class Scripture
 {
     private Reference _reference;
@@ -27,10 +22,13 @@ class Scripture
 
     public void HideRandomWords(int count)
     {
-        for (int i = 0; i < count; i++)
+        var visibleWords = _words.Where(w => !w.IsHidden).ToList();
+
+        for (int i = 0; i < count && visibleWords.Count > 0; i++)
         {
-            int index = _random.Next(_words.Count);
-            _words[index].Hide();
+            int index = _random.Next(visibleWords.Count);
+            visibleWords[index].Hide();
+            visibleWords.RemoveAt(index);
         }
     }
 
@@ -39,7 +37,3 @@ class Scripture
         return _words.All(w => w.IsHidden);
     }
 }
-
-
-
-

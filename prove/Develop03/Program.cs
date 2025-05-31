@@ -1,10 +1,13 @@
 using System;
+using System.IO;
+using System.Linq;
+using System.Collections.Generic;
 
 class Program
 {
     static void Main(string[] args)
     {
-        string filePath = "Zcriptures.txt";
+        string filePath = @"C:\Users\jaxma\OneDrive\Documents\C- progaming\C-\prove\Develop03\Zcriptures.txt";
         if (!File.Exists(filePath))
         {
             Console.WriteLine("Scripture file not found.");
