@@ -1,30 +1,46 @@
 using System;
-using System.Transactions;
-
 
 class Program
 {
     static void Main(string[] args)
     {
-        for (int i = 0; i < 10; i++)
+        Console.WriteLine("Choose a color:");
+        Console.WriteLine("1 - Red");
+        Console.WriteLine("2 - Green");
+        Console.WriteLine("3 - Blue");
+
+        Console.Write("Enter your choice (1, 2, or 3): ");
+        string input = Console.ReadLine();
+
+        switch (input)
         {
-            Console.WriteLine(i);
+            case "1":
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("You chose Red!");
+                break;
+            case "2":
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("You chose Green!");
+                break;
+            case "3":
+                Console.ForegroundColor = ConsoleColor.Blue;
+                Console.WriteLine("You chose Blue!");
+                break;
+            default:
+                Console.ForegroundColor = ConsoleColor.Gray;
+                Console.WriteLine("Invalid choice.");
+                break;
         }
-        Random randomGenerator = new Random();
-        int number = randomGenerator.Next(1, 20);
+
+        Console.ResetColor();
 
 
-        string response = "yes";
+        
 
-        while (response == "yes")
-        {
-            Console.WriteLine(number);
-            Console.Write("Do you want to continue? ");
-            response = Console.ReadLine();
-        }
-        for (int i = 2; i <= 20; i = i + 2)
-{
-    Console.WriteLine(i);
-}
+
+
+
+
     }
+
 }
