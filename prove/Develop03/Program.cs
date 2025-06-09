@@ -7,7 +7,7 @@ class Program
 {
     static void Main(string[] args)
     {
-        string filePath = @"C:\Users\jaxma\OneDrive\Documents\C- progaming\C-\prove\Develop03\Zcriptures.txt";
+        string filePath = "./Zcriptures.txt";
         if (!File.Exists(filePath))
         {
             Console.WriteLine("Scripture file not found.");
