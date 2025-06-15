@@ -9,6 +9,7 @@ public class ReflectionActivity : Activity
         "Think of a time when you stood up for someone else.",
         "Think of a time when you did something really difficult.",
         "Think of a time when you helped someone in need.",
+        "Think of a time when you did something really embarrassing.",
         "Think of a time when you did something truly selfless."
     };
 
@@ -22,6 +23,7 @@ public class ReflectionActivity : Activity
         "What is your favorite thing about this experience?",
         "What could you learn from this experience that applies to other situations?",
         "What did you learn about yourself through this experience?",
+        "STOP, HAMMER TIME",
         "How can you keep this experience in mind in the future?"
     };
 
