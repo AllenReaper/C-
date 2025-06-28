@@ -19,7 +19,9 @@ class Program
             Console.WriteLine("4. Display Score");
             Console.WriteLine("5. Save Goals");
             Console.WriteLine("6. Load Goals");
-            Console.WriteLine("7. Exit");
+            Console.WriteLine("7. View Rewards / Spend Points");
+            Console.WriteLine("8. Exit");
+
             Console.Write("Select an option: ");
 
             if (int.TryParse(Console.ReadLine(), out choice))
@@ -33,7 +35,9 @@ class Program
                     case 4: manager.DisplayScore(); break;
                     case 5: manager.SaveGoals(); break;
                     case 6: manager.LoadGoals(); break;
-                    case 7: Console.WriteLine("Goodbye!"); break;
+                    case 7: manager.RewardMenu(); break;
+                    case 8: Console.WriteLine("Goodbye!"); break;
+
                     default: Console.WriteLine("Invalid option."); break;
                 }
             }
@@ -48,6 +52,6 @@ class Program
                 Console.ReadLine();
             }
 
-        } while (choice != 7);
+        } while (choice != 8);
     }
 }

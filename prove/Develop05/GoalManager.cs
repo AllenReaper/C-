@@ -4,6 +4,8 @@ using System.IO;
 
 public class GoalManager
 {
+    private List<Reward> _rewards = new List<Reward>();
+
     private List<Goal> _goals = new List<Goal>();
     public int Score { get; private set; } = 0;
 
@@ -109,13 +111,19 @@ public class GoalManager
         using (StreamWriter writer = new StreamWriter(filename))
         {
             writer.WriteLine($"SCORE|{Score}");
+
             foreach (Goal goal in _goals)
             {
                 writer.WriteLine(goal.Serialize());
             }
+
+            foreach (Reward reward in _rewards)
+            {
+                writer.WriteLine(reward.Serialize());
+            }
         }
 
-        Console.WriteLine("Goals saved successfully.");
+        Console.WriteLine("Goals and rewards saved successfully.");
     }
 
     public void LoadGoals()
@@ -150,8 +158,105 @@ public class GoalManager
             {
                 _goals.Add(ChecklistGoal.Deserialize(line));
             }
+            else if (line.StartsWith("REWARD|"))
+            {
+                _rewards.Add(Reward.Deserialize(line));
+            }
+        }
+    Console.WriteLine("Goals and rewards loaded successfully.");
+    }
+    public void RewardMenu()
+    {
+        Console.Clear();
+        Console.WriteLine("=== Rewards Menu ===");
+        Console.WriteLine("1. View Rewards");
+        Console.WriteLine("2. Add Reward");
+        Console.WriteLine("3. Redeem Reward");
+        Console.WriteLine("4. Back");
+        Console.Write("Choose an option: ");
+        string input = Console.ReadLine();
+
+        switch (input)
+        {
+            case "1": ViewRewards(); break;
+            case "2": AddReward(); break;
+            case "3": RedeemReward(); break;
+            default:
+                return;
         }
 
-        Console.WriteLine("Goals loaded successfully.");
+        Console.WriteLine("\nPress Enter to continue...");
+        Console.ReadLine();
     }
+    
+    private void ViewRewards()
+    {
+        if (_rewards.Count == 0)
+        {
+            Console.WriteLine("No rewards available.");
+            return;
+        }
+
+        Console.WriteLine("Available Rewards:");
+        for (int i = 0; i < _rewards.Count; i++)
+        {
+            Console.WriteLine($"{i + 1}. {_rewards[i].GetInfo()}");
+        }
+    }
+
+    private void AddReward()
+    {
+        Console.Write("Enter reward name: ");
+        string name = Console.ReadLine();
+        Console.Write("Enter reward cost: ");
+        int cost = int.Parse(Console.ReadLine());
+
+        _rewards.Add(new Reward(name, cost));
+        Console.WriteLine("Reward added!");
+    }
+    
+    private void RedeemReward()
+    {
+        if (_rewards.Count == 0)
+        {
+            Console.WriteLine("No rewards available to redeem.");
+            return;
+        }
+
+        Console.WriteLine("Select a reward to redeem:");
+        for (int i = 0; i < _rewards.Count; i++)
+        {
+            Console.WriteLine($"{i + 1}. {_rewards[i].GetInfo()}");
+        }
+
+        Console.Write("Enter number: ");
+        if (int.TryParse(Console.ReadLine(), out int choice) &&
+            choice >= 1 && choice <= _rewards.Count)
+        {
+            Reward selected = _rewards[choice - 1];
+            if (Score >= selected.Cost)
+            {
+                Score -= selected.Cost;
+                Console.WriteLine($"You redeemed: {selected.Name} for {selected.Cost} points.");
+            }
+            else
+            {
+                Console.WriteLine("Not enough points to redeem this reward.");
+            }
+        }
+        else
+        {
+            Console.WriteLine("Invalid selection.");
+        }
+    }
+    
+
+
+
+
+
+
+
+
+
 }
