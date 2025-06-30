@@ -223,7 +223,7 @@ public class GoalManager
             return;
         }
 
-        Console.WriteLine("Select a reward to redeem:");
+        Console.WriteLine("Select a reward to redeem And TREAT YOURSELF:");
         for (int i = 0; i < _rewards.Count; i++)
         {
             Console.WriteLine($"{i + 1}. {_rewards[i].GetInfo()}");
