@@ -1,7 +1,9 @@
 public class StorageLocation
 {
-    public string Name { get; set; }             // e.g., "Drawer A3", "Bin 2", "Shelf 1"
-    public string Description { get; set; }      // Optional: "Top drawer in white cabinet"
+    public string Name { get; set; }
+    public string Description { get; set; }
+
+    public StorageLocation() { }
 
     public StorageLocation(string name, string description = "")
     {
@@ -11,6 +13,6 @@ public class StorageLocation
 
     public override string ToString()
     {
-        return $"{Name} - {Description}";
+        return $"{Name}" + (string.IsNullOrWhiteSpace(Description) ? "" : $" - {Description}");
     }
 }

@@ -19,4 +19,7 @@ public class Inventory
 
     public LegoSet GetSetByNumber(string setNumber) =>
         Sets.FirstOrDefault(s => s.SetNumber.Equals(setNumber, System.StringComparison.OrdinalIgnoreCase));
+
+    public List<StorageLocation> Locations { get; set; } = new();
+
 }
